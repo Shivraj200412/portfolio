@@ -90,6 +90,7 @@
       overflow: hidden;
       width: 200px;
       height: 200px;
+      padding: 20px; /* Add more padding as needed */
     }
 
     .logo img {
@@ -135,6 +136,26 @@
       font-size: 16px;
       margin-right: 10px;
     }
+
+    #projects-dropdown {
+      display: none;
+      position: absolute;
+      background-color: #000;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    #projects-dropdown a {
+      display: block;
+      color: #fff;
+      padding: 10px;
+      text-decoration: none;
+    }
+
+    #projects-dropdown a:hover {
+      background-color: #333;
+    }
+
   </style>
 </head>
 <body>
@@ -164,7 +185,13 @@
             </a>
           </div>
         </li>
-        <li><a href="#projects">Projects</a></li>
+        <li>
+          <a href="#projects">Projects</a>
+          <div id="projects-dropdown">
+            <a href="#project1">Project 1</a>
+            <a href="#project2">Project 2</a>
+          </div>
+        </li>
         <li><a href="#resume">Resume</a></li>
       </ul>
     </nav>
@@ -173,7 +200,6 @@
 
   <div class="main-content">
     <div class="logo">
-      
       <img src="mypfp.jpeg" alt="Logo">
     </div>
 
@@ -184,16 +210,13 @@
     <section id="socials">
       <h2>Bringing ideas to life with my development skills</h2>
       <p>Hi👋🏻.</p>
-      <p>I am an first year BTech Undergrad residing in Kolkata,India. I am an average self-taught developer who's all about coding👨🏻‍💻, gaming, and vibing to some great music🥁.</p>
-      <p>I have a firm grip on languages such as Java, HTML , CSS, JavaScript and a bit of Typescript</p>
-      <p>Additionally, I take great interest in knowing about plants and thier salient features🌿</p>
+      <p>I am a first-year BTech Undergrad residing in Kolkata, India. I am an average self-taught developer who's all about coding👨🏻‍💻, gaming, and vibing to some great music🥁.</p>
+      <p>I have a firm grip on languages such as Java, HTML, CSS, JavaScript, and a bit of TypeScript</p>
+      <p>Additionally, I take great interest in knowing about plants and their salient features🌿</p>
     </section>
 
     <section id="projects">
-      
-      
       <p>Please feel free to contact me via any of the socials mentioned above :D</p>
-      
     </section>
   </div>
 
@@ -203,8 +226,7 @@
   </a>
 
   <script>
-    
-  const socialsDropdown = document.getElementById('social-dropdown');
+    const socialsDropdown = document.getElementById('social-dropdown');
     const socialsLink = document.querySelector('a[href="#socials"]');
 
     socialsLink.addEventListener('mouseenter', () => {
@@ -223,19 +245,12 @@
       socialsDropdown.style.display = 'none';
     });
 
-    
-  
-    
-    
-
-    
     function toggleDarkMode() {
       const body = document.body;
       body.classList.toggle('dark-mode');
       updateModeButtonText();
     }
 
-  
     function setInitialMode() {
       const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
       const body = document.body;
@@ -243,7 +258,6 @@
       updateModeButtonText();
     }
 
-    
     function updateModeButtonText() {
       const body = document.body;
       const button = document.querySelector('.toggle-mode-button');
@@ -251,9 +265,26 @@
       button.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
     }
 
-    
     setInitialMode();
-  
+    
+    const projectsDropdown = document.getElementById('projects-dropdown');
+    const projectsLink = document.querySelector('a[href="#projects"]');
+
+    projectsLink.addEventListener('mouseenter', () => {
+      projectsDropdown.style.display = 'block';
+    });
+
+    projectsLink.addEventListener('mouseleave', () => {
+      projectsDropdown.style.display = 'none';
+    });
+
+    projectsDropdown.addEventListener('mouseenter', () => {
+      projectsDropdown.style.display = 'block';
+    });
+
+    projectsDropdown.addEventListener('mouseleave', () => {
+      projectsDropdown.style.display = 'none';
+    });
   </script>
 </body>
 </html>
